@@ -4,26 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-Do</title>
+  <link rel="stylesheet" href="app.css">
 </head>
 <body>
-  <section>
+  <section id="main">
     <div class="header">
       <h3>Todo</h3>
-      <div class="today">
-        <p>Today</p>
-        <p class="date">23/06/2024</p>
-        <span>Icon</span>
+      <div class="today-container">
+        <div class="today">
+          <p>Today</p>
+          <p class="date">23/06/2024</p>    
+        </div>
+        <span>📅</span>
       </div>
     </div>
     <div class="new-input">
-      <input type="text" placeholder="Add new task"> 
-      <button >+</button>
+      <input type="text" name="newToDo" placeholder="Add new task"> 
+      <button>+</button>
     </div>
     <section class="list">
-      <input type="checkbox">Buy water
-      <input type="checkbox">Buy Milk 
-      <input type="checkbox">Do H.W
-      <input type="checkbox">Make YT video
+      <section class="remaning">
+        <div class="todoRemaing">
+          <input type="checkbox">
+          <span>Buy Milk</span>
+          </div>
+          <div class="todoRemaing">
+            <input type="checkbox">
+            <span>Buy Water</span>
+          </div>
+          <div class="todoRemaing">
+            <input type="checkbox">
+            <span>Make YT video</span>
+          </div>
+          <div class="todoRemaing">
+            <input type="checkbox">
+            <span>Tweet for new role</span>
+          </div>
+      </section>
+      <hr>
+      <section class="done">  
+      <div class="todoDone">
+        <input type="checkbox" checked>
+        <span>Tweet for new role</span>
+        <button class="deleteBtn">X</button>
+      </div>
+      </section>
     </section>
   </section>
 </body>

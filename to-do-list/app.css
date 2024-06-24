@@ -1,0 +1,87 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #9802f5;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#main {
+  background: #FFFFFF;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 60%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: normal;
+}
+
+.header .today-container {
+  display: flex;
+  align-items: center;
+}
+
+.header .today {
+  text-align: center;
+  margin-left: 5px;
+}
+
+.header .today p {
+  margin: 0;
+  font-size: 17px;
+}
+
+.header .date {
+  padding: 5px;
+  font-size: 15px;
+  color: gray;
+}
+
+.header span {
+  font-size: 24px;
+  color: #3C82F6;
+}
+
+.new-input {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.new-input input {
+  width: 80%;
+  padding: 5px;
+  border: 1px solid #DDD;
+  border-radius: 5px;
+}
+
+.new-input button {
+  width: 15%;
+  background-color: #3C82F6;
+  color: #FFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.deleteBtn{
+  font-size: 15px;
+  background-color: rgb(255, 50, 18);
+  color: white;
+  border: none;
+  border-radius: 20%;
+}
