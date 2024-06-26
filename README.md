@@ -1,5 +1,9 @@
-# WebDevPracticum
-This repo contain all the web dev projects that I build while learning technologies from internet
+# WebDevPracticum by [@Dnyaneshpise](https://github.com/Dnyaneshpise)
+
+
+## _This repo contains all the web dev projects that I built while learning technologies from the internet_
 
 ## Projects 
-<a href="https://dnyaneshpise.github.io/WebDevPracticum/amazon-clone" style="color: #E44C71;">Amazon Clone</a>
+- [Amazon Clone](https://dnyaneshpise.github.io/WebDevPracticum/amazon-clone)
+
+- [Todo List](https://dnyaneshpise.github.io/WebDevPracticum/to-do-list)
