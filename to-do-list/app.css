@@ -3,7 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #9802f5;
+  background-color: #83c5be;
   margin: 0;
   font-family: Arial, sans-serif;
 }
@@ -12,21 +12,23 @@ body {
   background: #FFFFFF;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 80px #006d77;
   width: 60%;
 }
 
 .header {
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.header h3 {
+.header h4 {
   margin: 0;
-  font-size: 25px;
+  font-size: 23px;
   font-weight: normal;
+  text-shadow: #83c5be;
 }
 
 .header .today-container {
@@ -56,6 +58,7 @@ body {
 }
 
 .new-input {
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -77,11 +80,89 @@ body {
   cursor: pointer;
   font-size: 24px;
 }
-
-.deleteBtn{
+.new-input button:hover {
+  background-color: #2266d2;
+}
+.timeLeft{
+  margin-left: auto;
+  margin-right: 5px;
+}
+.timeLeft span{
+  font-size: 20px !important;
+  color: gray;
+}
+.list{
+  min-height: 200px;
+  padding: 10px;
+}
+.tableInfo{
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 90% 10%;
+  grid-template-rows: 30px;
+  grid-gap: 10px ;
+  border-bottom: 1px solid rgb(190, 190, 190);
+}
+.tableInfo span{
+  font-size: 20px;
+  font-style: italic;
+}
+.tableInfo svg {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  vertical-align: middle; 
+}
+.items {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+.items input[type="checkbox"] {
+  transform: scale(1.3);
+  margin-right: 15px;
+}
+.items span{
+  font-size: 18px;
+}
+.items .deleteBtn{
+  height: 25px;
   font-size: 15px;
-  background-color: rgb(255, 50, 18);
-  color: white;
   border: none;
-  border-radius: 20%;
+  border-radius: 6px;
+  padding: 5px 5px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right:5px ;
+}
+/* .items .deleteBtn:hover {
+
+} */
+.items .deleteBtn img{
+  width: 25px;
+}
+.remaining{
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.done{
+  background-color: rgba(241, 241, 241, 0.689);
+  border-radius: 10px;
+  margin-top: 10px;
+  border: 1px solid #cacaca;
+
+}
+.done .doneTask {
+  padding: 5px;
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+  color: rgb(109, 109, 109);
+  margin: 5px;
+  border-bottom:1px solid #b8b8b8bb;
+}
+.todoDone span{
+  color: rgb(186, 186, 186);
+  text-decoration: line-through;
 }

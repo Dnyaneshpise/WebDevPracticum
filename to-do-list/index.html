@@ -9,7 +9,8 @@
 <body>
   <section id="main">
     <div class="header">
-      <h3>Todo</h3>
+      <h4>My Day</h4>
+      <h4>Todo</h4>
       <div class="today-container">
         <div class="today">
           <p>Today</p>
@@ -23,31 +24,55 @@
       <button>+</button>
     </div>
     <section class="list">
-      <section class="remaning">
-        <div class="todoRemaing">
+      <section class="remaining">
+        <div class="tableInfo">
+          <span>Remaining Tasks </span>
+          <svg title="Time Left" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 3L2 6M22 6L19 3M6 19L4 21M18 19L20 21M12 9V13L14 15M12 21C14.1217 21 16.1566 20.1571 17.6569 18.6569C19.1571 17.1566 20 15.1217 20 13C20 10.8783 19.1571 8.84344 17.6569 7.34315C16.1566 5.84285 14.1217 5 12 5C9.87827 5 7.84344 5.84285 6.34315 7.34315C4.84285 8.84344 4 10.8783 4 13C4 15.1217 4.84285 17.1566 6.34315 18.6569C7.84344 20.1571 9.87827 21 12 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="items todoRemaing">
           <input type="checkbox">
           <span>Buy Milk</span>
+        </div>
+        <div class="items todoRemaing">
+          <input type="checkbox">
+          <span>Buy Water</span>
+        </div>
+        <div class="items todoRemaing">
+          <input type="checkbox">
+          <span>Make YT video</span>
+        </div>
+        <div class="items todoRemaing">
+          <input type="checkbox">
+          <span>Tweet for new role</span>
+          <div class="timeLeft">
           </div>
-          <div class="todoRemaing">
-            <input type="checkbox">
-            <span>Buy Water</span>
-          </div>
-          <div class="todoRemaing">
-            <input type="checkbox">
-            <span>Make YT video</span>
-          </div>
-          <div class="todoRemaing">
-            <input type="checkbox">
-            <span>Tweet for new role</span>
-          </div>
+        </div>
       </section>
-      <hr>
-      <section class="done">  
-      <div class="todoDone">
-        <input type="checkbox" checked>
-        <span>Tweet for new role</span>
-        <button class="deleteBtn">X</button>
-      </div>
+        <!-- <hr>  -->
+      <section class="done">
+        <p class="doneTask">Tasks Done &#9989;</p>
+        <div class="items todoDone">
+          <input type="checkbox" checked>
+          <span>Tweet for new role</span>
+          <button class="deleteBtn"><img src="Icons/delete.png" alt=""></button>
+        </div>
+        <div class="items todoDone">
+          <input type="checkbox" checked>
+          <span>Complete javascript tutorial</span>
+          <button class="deleteBtn"><img src="Icons/delete.png" alt=""></button>
+        </div>
+        <div class="items todoDone">
+          <input type="checkbox" checked>
+          <span>Tweet for new role</span>
+          <button class="deleteBtn"><img src="Icons/delete.png" alt=""></button>
+        </div>
+        <div class="items todoDone">
+          <input type="checkbox" checked>
+          <span>Tweet for new role</span>
+          <button class="deleteBtn"><img src="Icons/delete.png" alt=""></button>
+        </div>
       </section>
     </section>
   </section>
