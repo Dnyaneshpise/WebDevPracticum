@@ -51,11 +51,11 @@ body {
 }
 
 .centered-div p.main-description {
-  font-size: 1.6em;
+  font-size: 1.66em;
   font-style: italic;
   color: #333;
   line-height: 1.2;
-  text-align: justify;
+  text-align:left;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
