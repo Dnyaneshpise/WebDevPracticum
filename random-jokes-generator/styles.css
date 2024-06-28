@@ -1,0 +1,64 @@
+.centered-div {
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  background-color: #F7F7F7;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  overflow: hidden;
+}
+
+.centered-div .content {
+  position: relative;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.centered-div h1 {
+  font-size: 2em;
+  margin-bottom: 10px; 
+  color: #03200d;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+}
+.centered-div p {
+  font-size: 1.2em; 
+  color: #1f0416; 
+  margin-bottom: 20px; 
+}
+
+.centered-div p.main-description {
+  font-size: 1.6em;
+  font-style: italic;
+  color: #333;
+  line-height: 1.2;
+  text-align: justify;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; 
+}
+
+.centered-div button {
+  padding: 12px 30px;
+  border: 2px solid #FF5722; 
+  background-color: #FF5722; 
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.centered-div button:hover {
+  background-color: #FF7043;
+  border-color: #FF7043; 
+  transform: scale(1.05);
+}
