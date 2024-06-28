@@ -1,4 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #306e98;
+  overflow: hidden;
+}
 .centered-div {
+  z-index: 1;
   text-align: center;
   position: relative;
   display: flex;
@@ -15,6 +32,7 @@
 }
 
 .centered-div .content {
+  z-index: 1;
   position: relative;
   max-width: 80%;
   margin: 0 auto;
@@ -61,4 +79,74 @@
   background-color: #FF7043;
   border-color: #FF7043; 
   transform: scale(1.05);
+}
+.animated-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  animation: move 15s linear infinite;
+}
+
+.shape1 {
+  width: 120px;
+  height: 120px;
+  background-color: #3ebfd0;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape2 {
+  width: 80px;
+  height: 80px;
+  background-color: #f50072;
+  top: 20%;
+  left: 30%;
+  animation-delay: 2s;
+}
+
+.shape3 {
+  width: 150px;
+  height: 150px;
+  background-color: #FFC107;
+  top: 50%;
+  left: 50%;
+  animation-delay: 4s;
+}
+
+.shape4 {
+  width: 100px;
+  height: 100px;
+  background-color: #FF5722;
+  top: 80%;
+  left: 70%;
+  animation-delay: 6s;
+}
+
+.shape5 {
+  width: 90px;
+  height: 90px;
+  background-color: #b157e9;
+  top: 40%;
+  left: 80%;
+  animation-delay: 8s;
+}
+
+@keyframes move {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-100vh) translateX(100vw);
+  }
+  100% {
+      transform: translateY(0);
+  }
 }
