@@ -5,10 +5,8 @@ import formatCurrency  from "../utils/money.js";
 import { deliveryOptions ,getDeliveryOption} from "../../data/deliveryOptions.js";
 //Below is ESM version i.e ecmascript module
 import dayjs from "https://unpkg.com/dayjs@1.11.11/esm/index.js";
-const today = dayjs();
-const deliveryDate = today.add(7,"days")
-deliveryDate.format('dddd, MMMM D')
-console.log(deliveryDate)
+import { renderPaymentSummary } from "./paymentSummary.js";
+
 
 export function renderOrderSummary(){
 
@@ -115,6 +113,7 @@ export function renderOrderSummary(){
 
         const container = document.querySelector(`.js-cart-item-container-${productId}`)
         container.remove();
+        renderPaymentSummary();
       });
     });
 
@@ -125,6 +124,7 @@ export function renderOrderSummary(){
         console.log(productId,deliveryOptionId);
         updateDeliveryOption(productId,deliveryOptionId)
         renderOrderSummary();
+        renderPaymentSummary()
       });
     });
 
