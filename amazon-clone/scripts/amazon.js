@@ -81,9 +81,8 @@ let cartQuantity;
       cartQuantity=addToCart(productId,productQuantity);
       localStorage.setItem('cartQty',JSON.stringify(cartQuantity))
       
-      document.querySelector('.js-cart-quantity').innerHTML=localStorage.getItem('cartQty')||cartQuantity;
-  })
-  document.querySelector('.js-cart-quantity').innerHTML=localStorage.getItem('cartQty')||cartQuantity;
+      document.querySelector('.js-cart-quantity').innerHTML=localStorage.getItem('cartQty')||cartQuantity||0 })
+  document.querySelector('.js-cart-quantity').innerHTML=localStorage.getItem('cartQty')||cartQuantity||0;
   })
 }
  
