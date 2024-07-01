@@ -121,7 +121,9 @@ export function loadProductsFetch(){
   
     console.log("load products")
     // fun();
-  })
+  }).catch((err)=>{
+    console.log('Error',err)
+  });
 
   return promise;
 }
@@ -145,7 +147,11 @@ xhr.addEventListener('load',()=>{
   console.log("load products")
   fun();
 })
-  
+
+  xhr.addEventListner('error',(err)={
+    console.log("Error Occurs",err)
+  })
+
   xhr.open('GET','https://supersimplebackend.dev/products');
   xhr.send();
 }

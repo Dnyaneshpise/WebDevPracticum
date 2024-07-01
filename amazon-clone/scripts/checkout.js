@@ -6,6 +6,29 @@ import { loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 
 
+async function loadPage(){
+  try{
+
+    await loadProductsFetch();
+  
+    await new Promise((resolve)=>{
+      loadCart(()=>{
+        resolve();
+      });
+    });
+  }catch(err){
+    console.log("Error :",err)
+  }
+  
+  renderOrderSummary();
+  renderPaymentSummary();
+  
+}
+
+loadPage();
+
+
+/*
 Promise.all([
   loadProductsFetch(),
   new Promise((resolve)=>{
@@ -21,29 +44,31 @@ Promise.all([
 
 
 
-// new Promise((resolve)=>{
-//   loadProducts(()=>{
-//     resolve("value 1");
-//   });
+new Promise((resolve)=>{
+  loadProducts(()=>{
+    resolve("value 1");
+  });
 
-// }).then((value)=>{
-//   return new Promise((resolve)=>{
-//     loadCart(()=>{
-//       resolve();
-//     });
-//   })
+}).then((value)=>{
+  return new Promise((resolve)=>{
+    loadCart(()=>{
+      resolve();
+    });
+  })
 
-// }).then(()=>{
-//   renderOrderSummary();
-//   renderPaymentSummary();
-// })
+}).then(()=>{
+  renderOrderSummary();
+  renderPaymentSummary();
+})
 
 
 
-// loadProducts(()=>{
-//   loadCart(()=>{
+loadProducts(()=>{
+  loadCart(()=>{
     
-//   renderOrderSummary();
-//   renderPaymentSummary();
-//   })
-// }) 
+  renderOrderSummary();
+  renderPaymentSummary();
+  })
+}) 
+
+*/
