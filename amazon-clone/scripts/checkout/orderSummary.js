@@ -53,7 +53,7 @@ export function renderOrderSummary(){
               Update
             </span>
             <span class="delete-quantity-link link-primary js-delete-link-${matchingProduct.id} js-delete-link" 
-            data-product-id='${matchingProduct.id}'>
+            data-product-id='${matchingProduct.id}' data-product-qty='${cartItem.quantity}'>
               Delete
             </span>
           </div>
@@ -104,16 +104,28 @@ export function renderOrderSummary(){
     .innerHTML = cartSummarryHTML;
 
 
+function deleteQty(){
 
+}
   document.querySelectorAll(".js-delete-link")
     .forEach((link)=>{
       link.addEventListener("click",()=>{
+        // const qty = Number(document.querySelector('.quantity-lable').innerText)
         const productId = link.dataset.productId;
+        const qty = link.dataset.productQty;
+        let newQty = Number(localStorage.getItem('cartQty'))-qty;
+
+        localStorage.setItem('cartQty',JSON.stringify(newQty));
+
+        console.log(newQty);
+
+
         removeFromCart(productId);
 
         const container = document.querySelector(`.js-cart-item-container-${productId}`)
         container.remove();
         renderPaymentSummary();
+        deleteQty();
       });
     });
 
