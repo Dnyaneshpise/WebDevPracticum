@@ -66,3 +66,14 @@ export function updateDeliveryOption(productId,deliveryOptionId){
     matchingIteam.deliveryOptionId=deliveryOptionId;
     saveToStorage();
 }
+
+
+export function loadCart(fun){ //THIS FUN IS ALSO KNOW AS CALLBACK
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener('load',()=>{
+    console.log(xhr.response)
+    fun();
+  });
+  xhr.open('GET','https://supersimplebackend.dev/cart');
+  xhr.send();
+}
