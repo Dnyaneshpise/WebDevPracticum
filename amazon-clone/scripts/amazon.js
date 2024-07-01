@@ -67,12 +67,18 @@ function renderProductsGrid(){
   });
   document.querySelector('.js-products-grid').innerHTML=productsHTML;
 
+
+
+
+
+let cartQuantity;
+  
   document.querySelectorAll('.js-add-to-cart')
   .forEach((button)=>{
       button.addEventListener('click',()=>{
       const productId = button.dataset.productId;
       let productQuantity=Number(document.querySelector(`#select${productId}`).value);
-      let cartQuantity=addToCart(productId,productQuantity);
+      cartQuantity=addToCart(productId,productQuantity);
       localStorage.setItem('cartQty',JSON.stringify(cartQuantity))
       
       document.querySelector('.js-cart-quantity').innerHTML=localStorage.getItem('cartQty')||cartQuantity;
