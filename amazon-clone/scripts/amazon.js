@@ -1,6 +1,5 @@
 import { cart ,addToCart} from "../data/cart.js";
-import { products,
-  loadProducts} from "../data/products.js";
+import { products,loadProducts} from "../data/products.js";
 import formatCurrency from "./utils/money.js";
 
 loadProducts(renderProductsGrid); 
@@ -51,7 +50,7 @@ function renderProductsGrid(){
               </select>
             </div>
 
-            ${product.extraInfoHTML()} //this is example of polymorphism
+            ${product.extraInfoHTML()} 
 
             <div class="product-spacer"></div>
 
@@ -67,18 +66,18 @@ function renderProductsGrid(){
     `;
   });
   document.querySelector('.js-products-grid').innerHTML=productsHTML;
-}
 
-
-document.querySelectorAll('.js-add-to-cart')
+  document.querySelectorAll('.js-add-to-cart')
   .forEach((button)=>{
-    button.addEventListener('click',()=>{
+      button.addEventListener('click',()=>{
       const productId = button.dataset.productId;
       let productQuantity=Number(document.querySelector(`#select${productId}`).value);
       let cartQuantity=addToCart(productId,productQuantity);
-      document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
+      localStorage.setItem('cartQty',JSON.stringify(cartQuantity))
+      
+      document.querySelector('.js-cart-quantity').innerHTML=localStorage.getItem('cartQty')||cartQuantity;
   })
+  document.querySelector('.js-cart-quantity').innerHTML=localStorage.getItem('cartQty')||cartQuantity;
   })
-
-  
+}
  
