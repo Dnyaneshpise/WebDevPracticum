@@ -55,6 +55,21 @@ export const appHTML = {
         </div>
       </section>`,
   
-  remainingTasks : document.querySelector('#js-remaining'),
-  doneTasks : document.querySelector('#task-done')
-};
+  remainingTasks() {return document.querySelector('#js-remaining')},
+  doneTasks(){ return document.querySelector('#task-done')}
+  // remainingTasks :document.querySelector('#js-remaining'),
+  // doneTasks : document.querySelector('#task-done')
+}
+
+export const initial ={
+    html:`<div style=" justify-content: center;  align-items: center; font-size: 30px; color: #555;">
+      Your to-do list is empty.
+
+    <p style=" justify-content: center;       align-items: center; font-size: 24px;">GitHub: Dnyanesh pise</p>
+
+    <p style="font-size: 24px;">LinkedIn: Dnyanesh pise</p>
+
+    </div>
+
+  `
+}
