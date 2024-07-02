@@ -1,8 +1,16 @@
 body {
   background-color: #83c5be;
-  min-height: 50vh;
-  margin-top: 80px;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 0, 0 20px, 20px 20px;
+  min-height: 100vh;
+  margin: 0;
   font-family: Arial, sans-serif;
+  margin-top: 80px;
 }
 .app{
   display: flex;
@@ -85,6 +93,10 @@ body {
 .new-input button:hover {
   background-color: #2266d2;
 }
+#count{
+  padding: 5px;
+  margin: 2px 3px;
+}
 .timeLeft{
   margin-left: auto;
   margin-right: 5px;
@@ -97,25 +109,31 @@ body {
   min-height: 200px;
   padding: 10px;
 }
-.tableInfo{
-  display: grid;
+.tableInfo {
+  display: flex;
+  align-items: center;
   padding: 10px;
-  grid-template-columns: 90% 10%;
-  grid-template-rows: 30px;
-  grid-gap: 10px ;
-  border-bottom: 1px solid rgb(190, 190, 190);
+  border-bottom: 1px solid #ccc;
+  position: relative; /* Ensure relative positioning for the container */
 }
-.tableInfo span{
-  font-size: 20px;
+
+.tableInfo span {
+  font-size: 18px;
   font-style: italic;
   color: #162402;
+  flex-grow: 1; /* Allow span to grow and occupy remaining space */
 }
+
 .tableInfo svg {
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  vertical-align: middle; 
+  width: 28px;
+  height: 28px;
+  fill: #fcfcfc;
+  position: absolute; 
+  right: 10px; 
+  top: 50%; 
+  transform: translateY(-50%);
 }
+
 .items {
   display: flex;
   align-items: center;
@@ -186,4 +204,29 @@ footer p{
   margin-bottom:3px ;
   text-align: center;
   font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  #main {
+    width: 80%; /* Adjust width for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  #main {
+    width: 80%; /* Adjust width for even smaller screens */
+  }
+
+  .new-input {
+    flex-direction: column; /* Stack input and button vertically */
+  }
+
+  .new-input input {
+    width: 100%; /* Full width input on smaller screens */
+    margin-bottom: 10px; /* Added margin between input and button */
+  }
+
+  .new-input button {
+    width: 100%; /* Full width button on smaller screens */
+  }
 }
