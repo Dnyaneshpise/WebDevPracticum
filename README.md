@@ -7,3 +7,5 @@
 - [Amazon Clone](https://dnyaneshpise.github.io/WebDevPracticum/amazon-clone)
 
 - [Todo List](https://dnyaneshpise.github.io/WebDevPracticum/to-do-list)
+  
+- [Random Jokes Generator](https://dnyaneshpise.github.io/WebDevPracticum/random-jokes-generator/)
