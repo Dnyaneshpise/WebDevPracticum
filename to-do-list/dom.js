@@ -1,4 +1,4 @@
-import {tasks,loadTasks ,getTaskObj ,appHTML,initial } from "./data.js";
+import {tasks,loadTasks ,getTaskObj ,appHTML,initial,removeTask } from "./data.js";
 
 
 const addBtn = document.querySelector('#add-btn');
@@ -35,7 +35,7 @@ function renderTasks() {
     tasks.forEach((task) => {
       if (task.state) {
         htmlDone += `
-          <div class="items todoDone">
+          <div class="items todoDone" data-name="${task.name}">
             <input type="checkbox" checked data-name="${task.name}">
             <span>${task.name}</span>
             <button class="deleteBtn"></button>
@@ -46,7 +46,7 @@ function renderTasks() {
           </div>`;
       } else {
         htmlRemaining += `
-          <div class="items todoRemaining">
+          <div class="items todoRemaining" data-name="${task.name}">
             <input type="checkbox" data-name="${task.name}">
             <span>${task.name}</span>
             <button class="deleteBtn js-delete-btn"><svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trash" viewBox="0 0 16 16">
@@ -64,4 +64,27 @@ function renderTasks() {
     inputCheckBoxELe.forEach((box) => {
       box.addEventListener('click', toggleTask);
     });
+    //eventlistner for deletebtn
+    const deleteBtn = document.querySelectorAll('.js-delete-btn');
+    deleteBtn.forEach((btn)=>{
+      btn.addEventListener("click",(eve)=>{
+        const name = eve.target.parentElement.parentElement.dataset.name;
+        console.log(eve.target.parentElement.parentElement)
+        eve.target.parentElement.parentElement.remove();
+        removeTask(name);
+      })
+    })
+
 }
+
+
+
+function toggleTask(event) {
+  const checkbox = event.target;
+  const taskName = checkbox.getAttribute('data-name');
+  const matchingTask = getTaskObj(taskName);
+  matchingTask.toggle(); 
+  renderTasks(); 
+}
+
+renderTasks(); // Initial rendering
