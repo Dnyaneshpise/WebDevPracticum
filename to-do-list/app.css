@@ -159,14 +159,14 @@ body {
   margin-left: auto;
   margin-right:5px ;
 }
-.items .deleteBtn svg{
-  width: 23px;
-  height: 23px;
-  color: rgba(33, 40, 78, 0.877);
-  font-weight: 100;
-  fill:currentColor;
+.items .deleteBtn i{
+  /* width: 23px;
+  height: 23px; */
+  color: rgba(255, 10, 10, 0.877);
+  /* font-weight: 100;
+  fill:currentColor; */
 }
-.items .deleteBtn svg:hover{
+.items .deleteBtn i:hover{
   color: rgb(222, 0, 0);
 }
 .remaining{
@@ -205,6 +205,38 @@ footer p{
   text-align: center;
   font-size: 20px;
 }
+
+
+
+/* initial styles */
+
+#starter-page{
+  display: grid;
+  grid-template-columns: 10% 90%;
+  grid-template-rows: 50% 30% 80%;
+}
+#starter-page h2{
+  grid-column: 1/3;
+  grid-row: 1/2;;
+}
+#starter-page h4{
+  grid-column: 1/3;
+  grid-row: 2/3;;
+}
+#starter-page p:nth-child(1){
+  grid-column: 2/3;
+  grid-row: 2/3;;
+}
+
+#starter-page p:nth-child(2){
+  grid-column: 2/3;
+  grid-row: 2/3;;
+}
+
+
+
+
+
 
 @media (max-width: 768px) {
   #main {

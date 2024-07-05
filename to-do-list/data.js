@@ -62,14 +62,13 @@ export const appHTML = {
 }
 
 export const initial ={
-    html:`<div style=" justify-content: center;  align-items: center; font-size: 30px; color: #555;">
-      Your to-do list is empty.
-
-    <p style=" justify-content: center;       align-items: center; font-size: 24px;">GitHub: Dnyanesh pise</p>
-
-    <p style="font-size: 24px;">LinkedIn: Dnyanesh pise</p>
-
-    </div>
+    html:`<div id="starter-page">
+            <h2>Your to-do list is empty.</h2>
+            <h4>Follow me on</h4>
+            <p>GitHub</p>
+          </div>
 
   `
 }
+
+// style=" justify-content: center;  align-items: center; font-size: 30px; color: #555;
