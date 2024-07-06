@@ -4,8 +4,7 @@ import {tasks,loadTasks ,getTaskObj ,appHTML,initial,removeTask } from "./data.j
 const addBtn = document.querySelector('#add-btn');
 const inputTaskEle = document.querySelector('#newTask');
 const main = document.querySelector('.js-main-section');
-
-let {html, remainingTasks, doneTasks}=appHTML;
+let {html, remainingTasks, doneTasks ,countRemainingTask}=appHTML;
 
 addBtn.addEventListener('click', addTask);
 
@@ -21,7 +20,7 @@ function renderTasks() {
     main.innerHTML=initial.html;
   }else{
     main.innerHTML=html;
-
+    countRemainingTask =appHTML.countRemainingTask()
     remainingTasks =appHTML.remainingTasks();
     doneTasks = appHTML.doneTasks();
   }
@@ -38,23 +37,22 @@ function renderTasks() {
           <div class="items todoDone" data-name="${task.name}">
             <input type="checkbox" checked data-name="${task.name}">
             <span>${task.name}</span>
-            <button class="deleteBtn js-delete-btn" value=${task.name}><svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trash" viewBox="0 0 16 16">
-              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-              <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-            </svg></button>
+            <button class="deleteBtn js-delete-btn" value=${task.name}><i class="fa-solid fa-x"></i></button>
           </div>`;
       } else {
         htmlRemaining += `
           <div class="items todoRemaining">
             <input type="checkbox" data-name="${task.name}">
             <span>${task.name}</span>
-            <button class="deleteBtn js-delete-btn" value=${task.name}><i class="fa-solid fa-trash"></i></button>
+            <button class="deleteBtn js-delete-btn" value=${task.name}><i class="fa-solid fa-x"></i></i></button>
           </div>`;
       }
     });
 
     remainingTasks.innerHTML = htmlRemaining;
     doneTasks.innerHTML = htmlDone;
+
+    countRemainingTask.innerText=tasks.filter(task => !task.state).length || "";
 
     //event listner for checkboxes
     const inputCheckBoxELe = document.querySelectorAll('input[type="checkbox"]');

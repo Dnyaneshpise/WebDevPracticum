@@ -152,23 +152,23 @@ body {
 }
 .items .deleteBtn{
   height: 25px;
-  font-size: 15px;
+  font-size: 19px;
   border: none;
-  padding: 5px 5px;
+  padding: 5px;
   cursor: pointer;
   margin-left: auto;
-  margin-right:5px ;
+  margin-right:10px ;
+  color: #1e3050;
+  background-color: transparent;
 }
-.items .deleteBtn i{
-  /* width: 23px;
-  height: 23px; */
+/* .items .deleteBtn i{
+  width: 23px;
+  height: 23px; 
   color: rgba(255, 10, 10, 0.877);
-  /* font-weight: 100;
-  fill:currentColor; */
 }
 .items .deleteBtn i:hover{
   color: rgb(222, 0, 0);
-}
+} */
 .remaining{
   border-radius: 10px;
   border: 1px solid #ccc;
@@ -212,31 +212,43 @@ footer p{
 
 #starter-page{
   display: grid;
-  grid-template-columns: 10% 90%;
-  grid-template-rows: 50% 30% 80%;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 60% 20% 20%;
+  /* place-items: center; */
+  gap: 5px;
 }
 #starter-page h2{
   grid-column: 1/3;
-  grid-row: 1/2;;
+  grid-row: 1/2;
+  justify-self: center;
+  font-size: 30px;
 }
 #starter-page h4{
   grid-column: 1/3;
-  grid-row: 2/3;;
+  grid-row: 2/3;
+  font-size: 21px;
 }
-#starter-page p:nth-child(1){
+#starter-page p{
+  grid-column: 1/2;
+  grid-row: 3/4;
+  align-self: center;
+  justify-self:end;
+  font-size: 19px;
+}
+
+#starter-page a{
   grid-column: 2/3;
-  grid-row: 2/3;;
+  grid-row:  3/4;
+  align-self: center;
+  text-decoration: none;
+  font-size: 19px;
 }
 
-#starter-page p:nth-child(2){
-  grid-column: 2/3;
-  grid-row: 2/3;;
+
+a{
+  text-decoration: none;
+  color: #0d3b61;
 }
-
-
-
-
-
 
 @media (max-width: 768px) {
   #main {
