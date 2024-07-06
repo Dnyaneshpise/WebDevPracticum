@@ -1,10 +1,10 @@
 const tilesContainer = document.querySelector(".tiles")
-const colors = ["aqua","aquamarine","crimson","blue","dodgerbue","greenyello","teal"];
+const colors = ["aqua", "aquamarine", "crimson", "blue", "dodgerblue", "gold", "greenyellow", "teal"];
 const colorsPicklist = [...colors,...colors];
 const tileCount = colorsPicklist.length;
 
 //game state
-let reveledCOunt =0;
+let revealedCount =0;
 let activeTile =null;
 let awaitingEndOfMove = false;
 
@@ -13,7 +13,56 @@ function buildTile(color){
 
   element.classList.add("tile");
   element.setAttribute('data-color',color);
+  element.setAttribute('data-revealed',"false");
 
+  element.addEventListener("click", () => {
+		const revealed = element.getAttribute("data-revealed");
+
+		if (
+			awaitingEndOfMove
+			|| revealed === "true"
+			|| element == activeTile
+		) {
+			return;
+		}
+
+		// Reveal this color
+		element.style.backgroundColor = color;
+
+		if (!activeTile) {
+			activeTile = element;
+
+			return;
+		}
+
+		const colorToMatch = activeTile.getAttribute("data-color");
+    
+    if (colorToMatch === color) {
+			element.setAttribute("data-revealed", "true");
+			activeTile.setAttribute("data-revealed", "true");
+
+			activeTile = null;
+			awaitingEndOfMove = false;
+			revealedCount += 2;
+
+			if (revealedCount === tileCount) {
+				alert("You win! Refresh to start again.");
+			}
+
+			return;
+		}
+		awaitingEndOfMove = true;
+
+		setTimeout(() => {
+			activeTile.style.backgroundColor = null;
+			element.style.backgroundColor = null;
+
+			awaitingEndOfMove = false;
+			activeTile = null;
+		}, 500);
+	});
+
+	return element;
 }
 
 
