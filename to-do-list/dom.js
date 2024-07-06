@@ -9,7 +9,15 @@ let {html, remainingTasks, doneTasks ,countRemainingTask}=appHTML;
 addBtn.addEventListener('click', addTask);
 
 function addTask() {
-  tasks.push({ name: inputTaskEle.value, state: false });
+  let finalValue;
+  if(inputTaskEle.value && tasks.every(task => task.name !== inputTaskEle.value)){
+    console.log(inputTaskEle.value)
+    finalValue = inputTaskEle.value;
+  }else{
+    alert("Invalid input either empty or duplicate entry found!!");
+    return;
+  }
+  tasks.push({ name: finalValue, state: false });
   inputTaskEle.value = '';
   renderTasks();
   loadTasks();
@@ -37,14 +45,14 @@ function renderTasks() {
           <div class="items todoDone" data-name="${task.name}">
             <input type="checkbox" checked data-name="${task.name}">
             <span>${task.name}</span>
-            <button class="deleteBtn js-delete-btn" value=${task.name}><i class="fa-solid fa-x"></i></button>
+            <button class="deleteBtn js-delete-btn" value=${task.name.replaceAll(" ","%-%")}><i class="fa-solid fa-x"></i></button>
           </div>`;
       } else {
         htmlRemaining += `
           <div class="items todoRemaining">
             <input type="checkbox" data-name="${task.name}">
             <span>${task.name}</span>
-            <button class="deleteBtn js-delete-btn" value=${task.name}><i class="fa-solid fa-x"></i></i></button>
+            <button class="deleteBtn js-delete-btn" value=${task.name.replaceAll(" ","%-%")}><i class="fa-solid fa-x"></i></i></button>
           </div>`;
       }
     });
@@ -64,7 +72,7 @@ function renderTasks() {
     const deleteBtn = document.querySelectorAll('.js-delete-btn');
     deleteBtn.forEach((btn)=>{
       btn.addEventListener("click",(eve)=>{
-        const name = btn.value;
+        const name = btn.value.replaceAll("%-%"," ");
         btn.parentElement.remove()
         removeTask(name);
         renderTasks();
