@@ -18,8 +18,11 @@ app.set('views',path.join(__dirname,"views"));
 app.set('view engine','ejs')
 
 
-app.get('/products',(req,res)=>{
-  res.send("hello there!!")
+app.get('/products',async (req,res)=>{
+  const products = await Product.find({});
+  // console.log(prod)
+  res.render('products/index',{ products })  //will render from view folder no need to give .ejs explicitly here second argument is passign data into this ejs file
+  // res.send("hello there!!")
 })
 
 app.listen(3000, ()=>{
