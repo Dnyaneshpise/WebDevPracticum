@@ -25,14 +25,26 @@ app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/products',async (req,res)=>{
-  const products = await Product.find({});
-  // console.log(prod)
-  res.render('products/index',{ products })  //will render from view folder no need to give .ejs explicitly here second argument is passign data into this ejs file
+
+  const {category} =req.query;
+  if(category){
+    const products = await Product.find({category:category});
+    res.render('products/index',{ products ,category })  //will render from view folder no need to give .ejs explicitly here second argument is passign data into this ejs file
   // res.send("hello there!!")
+    
+  }else{
+    const products = await Product.find({});
+    res.render('products/index',{ products , category:'All'})  //will render from view folder no need to give .ejs explicitly here second argument is passign data into this ejs file
+  // res.send("hello there!!")
+  }
+  // console.log(prod)
+  
 })
 
+const categories =["fruit","vegetable","dairy"]
 app.get('/products/new',(req,res)=>{
-  res.render('products/new')
+  
+  res.render('products/new',{ categories })
 })
 
 app.post('/products',async (req,res)=>{
@@ -65,7 +77,7 @@ app.get('/products/:id/edit', async (req,res)=>{
     const { id } = req.params;
     const product = await Product.findById(id);
     // console.log({...product});
-    res.render('products/edit',{ product })
+    res.render('products/edit',{ product , categories})
   }catch(err){
 
     console.log(err)
@@ -86,6 +98,20 @@ app.put('/products/:id', async (req,res)=>{
   }
 })
 
+app.delete('/products/:id',async (req,res)=>{
+  
+  const { id } = req.params;
+  //deleting from DB
+  const deletedProduct = await Product.findByIdAndDelete(id)
+  res.redirect('/products')
+  // res.send("deleted")
+})
+
 app.listen(3000, ()=>{
   console.log("APP IS LISTENING ON PORT 3000!")
 })
+
+
+// /categories/DOMMatrixReadOnly
+
+// /products?category=dairy
