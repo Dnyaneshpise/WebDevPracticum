@@ -3,11 +3,11 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override')
-
+require('dotenv').config();
 
 const Product = require(path.join(__dirname,'/models/product'))
 
-mongoose.connect('mongodb://127.0.0.1:27017/farmStand')
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Connected to MongoDB");
     })
@@ -107,7 +107,8 @@ app.delete('/products/:id',async (req,res)=>{
   // res.send("deleted")
 })
 
-app.listen(3000, ()=>{
+const port = process.env.PORT || 3000;
+app.listen(port, ()=>{
   console.log("APP IS LISTENING ON PORT 3000!")
 })
 

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const path = require('path');
 const Product = require(path.join(__dirname,'/models/product'))
-
-mongoose.connect('mongodb://127.0.0.1:27017/farmStand')
+require('dotenv').config();
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Connected to MongoDB");
     })
