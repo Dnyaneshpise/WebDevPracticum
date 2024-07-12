@@ -30,11 +30,21 @@ app.use(express.urlencoded({ extended: true }))
 
 app.get('/farms',async(req,res)=>{
   const farms = await Farm.find({});
-  
+  res.render('farms/index',{ farms })
 })
 
 app.get('/farms/new', (req , res ) => {
   res.render('farms/new')
+})
+
+//show route for farms
+app.get('/farms/:id',async (req,res)=>{
+  try{
+    const farm = await Farm.findById(req.params.id);
+    res.render('farms/show',{ farm })
+  }catch(e){
+    console.log(e)
+  }
 })
 
 app.post('/farms' , async (req , res)=>{
