@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Product</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 400px;
+      max-width: 90%;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Arial', sans-serif;
+      color: #ff6347;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
+    button {
+      background-color: #ff6347;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ff4500;
+    }
+    a {
+      margin-top: 10px;
+      color: #666;
+      text-decoration: none;
+      font-size: 0.9em;
+      transition: color 0.3s ease;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    a:hover {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Add a Product</h1>
+    <form action="/farms/<%= id %>/products" method="post">
+      <label for="name">Product Name</label>
+      <input type="text" name="name" id="name" placeholder="Enter Product Name" required>
+      <label for="price">Product Price</label>
+      <input type="number" name="price" id="price" placeholder="Enter Product Price" required>
+      <label for="category">Select Category</label>
+      <select name="category" id="category" required>
+        <% for(let cat of categories) { %>
+          <option value="<%= cat %>"><%= cat %></option>
+        <%}%>
+      </select>
+      <button type="submit">Submit</button>
+      <a href="/products">Back to Products</a>
+    </form>
+  </div>
+</body>
+</html>

@@ -14,7 +14,7 @@ const farmSchema = new Schema({
     type:String,
     required:[ true , "Email required"]
   },
-  Products:[
+  products:[
     {
       type: Schema.Types.ObjectId,
       ref: 'Product'
