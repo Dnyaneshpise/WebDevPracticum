@@ -39,9 +39,10 @@ app.get('/farms/new', (req , res ) => {
 
 app.delete('/farms/:id',async (req,res)=>{
   try{
-    console.log('deleting')
-    // const farm = await Farm.findByIdAndDelete(req.params.id);
-    // res.render('farms',{ farm })
+    // console.log('deleting')
+    const farm = await Farm.findByIdAndDelete(req.params.id);
+
+    res.redirect('/farms')
   }catch(e){
     console.log(e)
   }
@@ -138,9 +139,9 @@ app.get('/products/:id', async (req,res)=>{
   const { id } = req.params;
   const product = await Product.findById(id).populate('farm','name');
   // console.log({...product});
-  console.log(product)
+  // console.log(product)
   res.render('products/show',{ product })
-  console.log(product);
+  // console.log(product);
 
   // res.send("details page!");
 })

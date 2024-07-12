@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Product = require('./product');
 const { Schema } = mongoose;
 
 const farmSchema = new Schema({
@@ -22,6 +21,28 @@ const farmSchema = new Schema({
   ]
 })
 
+
+
+//express middleware and mongoose middleware are different 
+//they have same principal but different ways of implimentation
+
+// farmSchema.pre('findOneAndDelete', async (data)=>{
+//   console.log("pre middleware")
+//   console.log(data)
+// })
+
+farmSchema.post('findOneAndDelete', async function (farm) {
+  try {
+    if (farm.products.length) {
+      console.log(farm," is deleting")
+      const Product = mongoose.model('Product');
+      const res = await Product.deleteMany({ _id: { $in: farm.products } });
+      console.log(res);
+    }
+  } catch (error) {
+    console.error('Error deleting products associated with the farm:', error);
+  }
+});
 
 const Farm = mongoose.model('Farm', farmSchema);
  
