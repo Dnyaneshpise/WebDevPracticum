@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Farm = require('./farms')
 const {Schema} = mongoose
 const productSchema = new Schema({
   name :{

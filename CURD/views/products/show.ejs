@@ -108,6 +108,11 @@
   <ul>
     <li> Price: $<%= product.price %></li>
     <li> Category: <a href="/products?category=<%= product.category %>"><%= product.category %>   <span> know more</span></a></li>
+    <li>By -
+      <a href="/farms/<%= product.farm._id  %>">
+        <%= product.farm.name  %>
+      </a>
+    </li>
   </ul>
   <div class="button-group">
     <a href="/products" class="button">All Products</a>

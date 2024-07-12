@@ -109,13 +109,25 @@
     <li> City : <%= farm.city %></li>
     <li> Email: <%= farm.email %></li>
   </ul>
+  <h2>Products</h2>
+  <ul>
+    <% for(let product of farm.products){ %>
+      <li><a href="/products/<%= product._id %>"><%= product.name %></a></li>
+    <% } %>
+  </ul>
+
   <div class="button-group">
     <a href="/farms" class="button">All Farms</a>
+    <a href="/products" class="button">All Products</a>
   </div>
   <div class="div">
     <p>
     <a href="/farms/<%= farm.id %>/products/new">Add a product In this Farm</a>
     </p>
   </div>
+
+  <form action="/farms/<%= farm.id %>?_method=delete" method="post">
+    <button class="delete-button">Dlete</button>
+  </form>
 </body>
 </html>

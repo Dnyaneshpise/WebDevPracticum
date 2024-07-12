@@ -37,10 +37,20 @@ app.get('/farms/new', (req , res ) => {
   res.render('farms/new')
 })
 
+app.delete('/farms/:id',async (req,res)=>{
+  try{
+    console.log('deleting')
+    // const farm = await Farm.findByIdAndDelete(req.params.id);
+    // res.render('farms',{ farm })
+  }catch(e){
+    console.log(e)
+  }
+})
+
 //show route for farms
 app.get('/farms/:id',async (req,res)=>{
   try{
-    const farm = await Farm.findById(req.params.id);
+    const farm = await Farm.findById(req.params.id).populate('products');
     res.render('farms/show',{ farm })
   }catch(e){
     console.log(e)
@@ -59,9 +69,12 @@ app.post('/farms' , async (req , res)=>{
 })
 
 
-app.get('/farms/:id/products/new',(req,res)=>{
+app.get('/farms/:id/products/new', async (req,res)=>{
   const { id } = req.params;
-  res.render('farms/newFarmProduct',{ categories ,id})
+  const farm= await Farm.findById(id);
+  const farmName = farm.name;
+  // console.log(farmName);
+  res.render('farms/newFarmProduct',{ categories ,id ,farmName})
 })
 
 app.post('/farms/:id/products',async (req,res)=>{
@@ -123,8 +136,9 @@ app.post('/products',async (req,res)=>{
 
 app.get('/products/:id', async (req,res)=>{
   const { id } = req.params;
-  const product = await Product.findById(id);
+  const product = await Product.findById(id).populate('farm','name');
   // console.log({...product});
+  console.log(product)
   res.render('products/show',{ product })
   console.log(product);
 
