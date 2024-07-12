@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= product.name %></title>
+  <title><%= farm.name %></title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -104,22 +104,30 @@
   </style>
 </head>
 <body>
-  <h1><%= product.name %></h1>
+  <h1><%= farm.name %></h1>
   <ul>
-    <li> Price: $<%= product.price %></li>
-    <li> Category: <a href="/products?category=<%= product.category %>"><%= product.category %>   <span> know more</span></a></li>
-    <li>By -
-      <a href="/farms/<%= product.farm._id  %>">
-        <%= product.farm.name  %>
-      </a>
-    </li>
+    <li> City : <%= farm.city %></li>
+    <li> Email: <%= farm.email %></li>
   </ul>
+  <h2>Products</h2>
+  <ul>
+    <% for(let product of farm.products){ %>
+      <li><a href="/products/<%= product._id %>"><%= product.name %></a></li>
+    <% } %>
+  </ul>
+
   <div class="button-group">
+    <a href="/farms" class="button">All Farms</a>
     <a href="/products" class="button">All Products</a>
-    <a href="/products/<%= product._id %>/edit" class="button">Edit Product</a>
   </div>
-  <form action="/products/<%= product._id %>?_method=DELETE" method="post">
-    <button class="delete-button">DELETE</button>
+  <div class="div">
+    <p>
+    <a class="button" href="/farms/<%= farm.id %>/products/new">Add a product In this Farm</a>
+    </p>
+  </div>
+
+  <form action="/farms/<%= farm.id %>?_method=delete" method="post">
+    <button class="delete-button">Delete</button>
   </form>
 </body>
 </html>

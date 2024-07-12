@@ -6,6 +6,7 @@ const methodOverride = require('method-override')
 require('dotenv').config();
 
 const Product = require(path.join(__dirname,'/models/product'))
+const Farm =require(path.join(__dirname,'/models/farms'))
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
@@ -23,6 +24,78 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
+
+//FARM ROUTES
+
+app.get('/farms',async(req,res)=>{
+  const farms = await Farm.find({});
+  res.render('farms/index',{ farms })
+})
+
+app.get('/farms/new', (req , res ) => {
+  res.render('farms/new')
+})
+
+app.delete('/farms/:id',async (req,res)=>{
+  try{
+    // console.log('deleting')
+    const farm = await Farm.findByIdAndDelete(req.params.id);
+
+    res.redirect('/farms')
+  }catch(e){
+    console.log(e)
+  }
+})
+
+//show route for farms
+app.get('/farms/:id',async (req,res)=>{
+  try{
+    const farm = await Farm.findById(req.params.id).populate('products');
+    res.render('farms/show',{ farm })
+  }catch(e){
+    console.log(e)
+  }
+})
+
+app.post('/farms' , async (req , res)=>{
+  try{
+
+    const farm = new Farm(req.body)
+    await farm.save();
+    res.redirect('/farms')
+  }catch(err){
+    console.log(err)
+  }
+})
+
+
+app.get('/farms/:id/products/new', async (req,res)=>{
+  const { id } = req.params;
+  const farm= await Farm.findById(id);
+  const farmName = farm.name;
+  // console.log(farmName);
+  res.render('farms/newFarmProduct',{ categories ,id ,farmName})
+})
+
+app.post('/farms/:id/products',async (req,res)=>{
+  try{
+    const { id } = req.params;
+    const farm = await Farm.findById(id);
+    const { name, price, category } = req.body;
+    const product = new Product({ name ,price , category});
+    farm.products.push(product);
+    product.farm=farm;
+    await farm.save();
+    await product.save();
+    res.redirect(`/farms/${farm._id}`)
+  }catch(e){
+    console.log(e);
+  }
+})
+
+
+
+//PRODUCT ROUTES
 
 app.get('/products',async (req,res)=>{
 
@@ -63,10 +136,11 @@ app.post('/products',async (req,res)=>{
 
 app.get('/products/:id', async (req,res)=>{
   const { id } = req.params;
-  const product = await Product.findById(id);
+  const product = await Product.findById(id).populate('farm','name');
   // console.log({...product});
+  // console.log(product)
   res.render('products/show',{ product })
-  console.log(product);
+  // console.log(product);
 
   // res.send("details page!");
 })
