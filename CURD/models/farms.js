@@ -17,7 +17,12 @@ const farmSchema = new Schema({
   Products:[
     {
       type: Schema.Types.ObjectId,
-      ref:'Product'
+      ref: 'Product'
     }
   ]
 })
+
+
+const Farm = mongoose.model('Farm', farmSchema);
+ 
+module.exports = Farm;

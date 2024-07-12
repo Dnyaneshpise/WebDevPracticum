@@ -6,8 +6,9 @@ const methodOverride = require('method-override')
 
 
 const Product = require(path.join(__dirname,'/models/product'))
+const Farm =require(path.join(__dirname,'/models/farms'))
 
-mongoose.connect('mongodb://127.0.0.1:27017/farmStand')
+mongoose.connect('mongodb://127.0.0.1:27017/farmStand2')
     .then(() => {
         console.log("Connected to MongoDB");
     })
@@ -23,6 +24,25 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
+
+//FARM ROUTES
+
+app.get('/farms/new', (req , res ) => {
+  res.render('farms/new')
+})
+
+app.post('/farms' , async (req , res)=>{
+  try{
+    
+    const farm = new Farm(req.body)
+    await farm.save();
+
+  }catch(err){
+    console.log(err)
+  }
+})
+
+//PRODUCT ROUTES
 
 app.get('/products',async (req,res)=>{
 
