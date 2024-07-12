@@ -3,12 +3,13 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override')
+require('dotenv').config();
 
 
 const Product = require(path.join(__dirname,'/models/product'))
 const Farm =require(path.join(__dirname,'/models/farms'))
 
-mongoose.connect('mongodb://127.0.0.1:27017/farmStand2')
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Connected to MongoDB");
     })
@@ -27,16 +28,21 @@ app.use(express.urlencoded({ extended: true }))
 
 //FARM ROUTES
 
+app.get('/farms',async(req,res)=>{
+  const farms = await Farm.find({});
+  
+})
+
 app.get('/farms/new', (req , res ) => {
   res.render('farms/new')
 })
 
 app.post('/farms' , async (req , res)=>{
   try{
-    
+
     const farm = new Farm(req.body)
     await farm.save();
-
+    res.redirect('/farms')
   }catch(err){
     console.log(err)
   }
@@ -127,7 +133,9 @@ app.delete('/products/:id',async (req,res)=>{
   // res.send("deleted")
 })
 
-app.listen(3000, ()=>{
+
+const port = process.env.PORT || 3000;
+app.listen(port, ()=>{
   console.log("APP IS LISTENING ON PORT 3000!")
 })
 
