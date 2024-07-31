@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+.property-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  gap: 10px; 
+  justify-content: space-between; 
+}
+.property-item {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1 1 200px;
+}
