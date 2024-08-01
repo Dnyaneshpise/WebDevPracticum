@@ -2,6 +2,7 @@ import "./App.css";
 
 import ShoppingList from "./shoppingList";
 import PropertyList from "../PropertyList";
+import ColorBox from "./ColorBox";
 
 
 const data = [
@@ -21,6 +22,25 @@ const properties = [
   { id: 129035, name: "Gold Miner Campground", rating: 4.69, price: 96 },
 ];
 
+
+const colors = [
+  "#E53935",
+  "#E91E63",
+  "#9C27B0",
+  "#673AB7",
+  "#3F51B5",
+  "#2196F3",
+  "#03A9F4",
+  "#00BCD4",
+  "#009688",
+  "#4CAF50",
+  "#8BC34A",
+  "#CDDC39",
+  "#FFEB3B",
+  "#FFC107",
+  "#FF9800",
+  "#FF5722",
+];
 function App() {
   return (
     <>
@@ -28,6 +48,9 @@ function App() {
       <ShoppingList items={data} />
       <hr />
       <PropertyList properties={properties}/>
+      <hr />
+
+      <ColorBox colors={colors}/>
     </>
   );
 }
