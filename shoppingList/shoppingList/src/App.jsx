@@ -3,7 +3,10 @@ import "./App.css";
 import ShoppingList from "./shoppingList";
 import PropertyList from "../PropertyList";
 import ColorBox from "./ColorBox";
+import ColorBoxGrid from "./ColorBoxGrid";
 
+
+import "./Colorbox.css";
 
 const data = [
   { id:1, item: "eggs", quantity: 12, completed: false },
@@ -50,7 +53,7 @@ function App() {
       <PropertyList properties={properties}/>
       <hr />
 
-      <ColorBox colors={colors}/>
+      <ColorBoxGrid colors={colors}/>
     </>
   );
 }
