@@ -7,6 +7,7 @@ import ColorBoxGrid from "./ColorBoxGrid";
 
 
 import "./Colorbox.css";
+import ScoreKeeper from "./Scorekeeper";
 
 const data = [
   { id:1, item: "eggs", quantity: 12, completed: false },
@@ -47,7 +48,7 @@ const colors = [
 function App() {
   return (
     <>
-
+      <ScoreKeeper numPlayers={3} target={5}/>
       <ShoppingList items={data} />
       <hr />
       <PropertyList properties={properties}/>
