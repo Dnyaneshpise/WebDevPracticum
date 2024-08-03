@@ -8,7 +8,9 @@ import ColorBoxGrid from "./ColorBoxGrid";
 
 import "./Colorbox.css";
 import ScoreKeeper from "./Scorekeeper";
-
+import Lucky7 from "./Lucky7";
+import LuckyN from "./LuckyN"
+import BoxGrid from "./BoxGrid"
 const data = [
   { id:1, item: "eggs", quantity: 12, completed: false },
   { id:2, item: "Mongo", quantity: 5, completed: true },
@@ -45,15 +47,27 @@ const colors = [
   "#FF9800",
   "#FF5722",
 ];
+function lessThan4(dice) {
+  return sum(dice) < 4;
+}
+
+function allSameValue(dice) {
+  return dice.every((v) => v === dice[0]);
+}
 function App() {
   return (
     <>
       <ScoreKeeper numPlayers={3} target={5}/>
+      <hr />
+      <Lucky7 />
       <ShoppingList items={data} />
+      <hr />
+      <LuckyN winCheck={allSameValue}/>
       <hr />
       <PropertyList properties={properties}/>
       <hr />
-
+      <BoxGrid />
+      <hr />
       <ColorBoxGrid colors={colors}/>
     </>
   );
