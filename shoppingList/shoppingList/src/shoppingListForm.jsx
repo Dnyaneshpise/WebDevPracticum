@@ -18,6 +18,7 @@ const handelChange=(evt)=>{
 const handelSubmit=(evt)=>{
     evt.preventDefault();
     addItem(formData);
+    setFormData({product:'',quantity:0})
 }
 
 return(

@@ -3,21 +3,20 @@ import "./App.css";
 import ShoppingList from "./shoppingList";
 import PropertyList from "../PropertyList";
 import ColorBox from "./ColorBox";
-import ColorBoxGrid from "./ColorBoxGrid";
-
+import 
+ColorBoxGrid from "./ColorBoxGrid";
 
 import "./Colorbox.css";
 import ScoreKeeper from "./Scorekeeper";
 import Lucky7 from "./Lucky7";
-import LuckyN from "./LuckyN"
-import BoxGrid from "./BoxGrid"
+import LuckyN from "./LuckyN";
+import BoxGrid from "./BoxGrid";
 const data = [
-  { id:1, item: "eggs", quantity: 12, completed: false },
-  { id:2, item: "Mongo", quantity: 5, completed: true },
-  { id:3, item: "berry", quantity: 7, completed: false },
-  { id:4, item: "Orange", quantity: 2, completed: true },
+  { id: 1, item: "eggs", quantity: 12, completed: false },
+  { id: 2, item: "Mongo", quantity: 5, completed: true },
+  { id: 3, item: "berry", quantity: 7, completed: false },
+  { id: 4, item: "Orange", quantity: 2, completed: true },
 ];
-
 
 const properties = [
   { id: 129031, name: "Desert Yurt", rating: 4.9, price: 150 },
@@ -27,7 +26,6 @@ const properties = [
   { id: 129034, name: "Oceanview Condo", rating: 4.7, price: 140 },
   { id: 129035, name: "Gold Miner Campground", rating: 4.69, price: 96 },
 ];
-
 
 const colors = [
   "#E53935",
@@ -57,18 +55,23 @@ function allSameValue(dice) {
 function App() {
   return (
     <>
-      <ScoreKeeper numPlayers={3} target={5}/>
+      <ScoreKeeper numPlayers={3} target={5} />
       <hr />
       <Lucky7 />
-      <ShoppingList items={data} />
       <hr />
-      <LuckyN winCheck={allSameValue}/>
+      <PropertyList properties={properties} />
       <hr />
-      <PropertyList properties={properties}/>
+      <LuckyN winCheck={allSameValue} />
       <hr />
       <BoxGrid />
       <hr />
-      <ColorBoxGrid colors={colors}/>
+      <ColorBoxGrid colors={colors} />
+      <hr />
+      <div>
+      <ShoppingList />
+      </div>
+      <hr />
+      <h5>END</h5>
     </>
   );
 }
