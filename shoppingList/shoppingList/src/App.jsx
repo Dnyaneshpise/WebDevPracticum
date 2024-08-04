@@ -11,6 +11,7 @@ import ScoreKeeper from "./Scorekeeper";
 import Lucky7 from "./Lucky7";
 import LuckyN from "./LuckyN";
 import BoxGrid from "./BoxGrid";
+import FetchQuote from "./FetchQuote";
 const data = [
   { id: 1, item: "eggs", quantity: 12, completed: false },
   { id: 2, item: "Mongo", quantity: 5, completed: true },
@@ -56,6 +57,9 @@ function App() {
   return (
     <>
       <ScoreKeeper numPlayers={3} target={5} />
+      <hr />
+      
+      <FetchQuote />
       <hr />
       <Lucky7 />
       <hr />
