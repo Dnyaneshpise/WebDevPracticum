@@ -38,11 +38,11 @@ function ProfileViewerWithSearch() {
 
 
   return (
-    <div>
-      <h1>Search for Github Profile Pic </h1>
+    <div className="profile-viewer-container">
+      <h1>Search for Github Profile Pic</h1>
       <ProfileSearchForm search={search} />
-      {url ? <img src={url} alt="" /> : "No Profile image found"}
-      <h3>{profile.data?.name && profile.data.name}</h3>
+      {url ? <img className="profile-image" src={url} alt="Profile" /> : "No Profile image found"}
+      <h3 className="profile-name">{profile.data?.name && profile.data.name}</h3>
     </div>
   );
 }
