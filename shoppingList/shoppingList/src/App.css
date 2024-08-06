@@ -106,3 +106,72 @@
   color: #555;
   margin-top: 10px;
 }
+
+.shopping-list-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.shopping-list-header {
+  color: salmon;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.shopping-list-items {
+  list-style: none;
+  padding: 0;
+  color: rgb(42, 65, 7);
+  margin: 0 0 2rem 0;
+}
+
+.shopping-list-item {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shopping-list-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.shopping-list-form label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.shopping-list-form input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.shopping-list-form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.shopping-list-form button:hover {
+  background-color: #0056b3;
+}

@@ -1,51 +1,46 @@
 import { useState } from "react";
+// import "./shoppingList.css";
 
-function ShoppingListForm({addItem}){
-  
-const [formData,setFormData]=useState({product:'',quantity:0})
+function ShoppingListForm({ addItem }) {
+  const [formData, setFormData] = useState({ product: "", quantity: 0 });
 
-const handelChange=(evt)=>{
-  setFormData(
-    (currentData)=>{
-      return {
-        ...currentData,
-        [evt.target.name]:[evt.target.value]
-      };
-    }
-  )
-}
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+  };
 
-const handelSubmit=(evt)=>{
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     addItem(formData);
-    setFormData({product:'',quantity:0})
-}
+    setFormData({ product: "", quantity: 0 });
+  };
 
-return(
-  <form onSubmit={
-    handelSubmit
-  }>
-    <label htmlFor="product">Product Name</label>
-    <input 
-    type="text" 
-    placeholder="product name"
-    name="product"
-    id="product"
-    onChange={handelChange}
-    value={formData.product}
-    />
-    <label htmlFor="quantity">Quantity</label>
-    <input 
-    type="number" 
-    placeholder="1"
-    name="quantity"
-    id="quantity"
-    onChange={handelChange}
-    value={formData.quantity}
-    />
-    <button>Add item</button>
-  </form>
-)
+  return (
+    <form onSubmit={handleSubmit} className="shopping-list-form">
+      <label htmlFor="product">Product Name</label>
+      <input
+        type="text"
+        placeholder="Product name"
+        name="product"
+        id="product"
+        onChange={handleChange}
+        value={formData.product}
+      />
+      <label htmlFor="quantity">Quantity</label>
+      <input
+        type="number"
+        placeholder="1"
+        name="quantity"
+        id="quantity"
+        onChange={handleChange}
+        value={formData.quantity}
+      />
+      <button>Add item</button>
+    </form>
+  );
 }
 
 export default ShoppingListForm;
