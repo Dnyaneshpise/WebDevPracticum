@@ -6,6 +6,8 @@
 ## Projects 
 - [Amazon Clone ](https://dnyaneshpise.github.io/WebDevPracticum/amazon-clone)
 
-- [Todo List -In Progress](https://dnyaneshpise.github.io/WebDevPracticum/to-do-list)
+- [Todo List basic version](https://dnyaneshpise.github.io/WebDevPracticum/to-do-list)
 
 - [Random Jokes Generator](https://dnyaneshpise.github.io/WebDevPracticum/random-jokes-generator)
+  
+- [CURD operation](https://farms-and-products.vercel.app/)
