@@ -11,5 +11,7 @@
 - [Random Jokes Generator](https://dnyaneshpise.github.io/WebDevPracticum/random-jokes-generator)
   
 - [CURD operation](https://farms-and-products.vercel.app/)
+  
+- [Basic React Project](https://webdevpracticum-1.onrender.com/)
 
-- [ToDo](https://)
+- [Bacis React ToDo](https://react2dolist.onrender.com/)
