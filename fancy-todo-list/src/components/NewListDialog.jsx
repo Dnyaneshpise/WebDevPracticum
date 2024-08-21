@@ -64,7 +64,49 @@ export function NewListDialog({ dialogState }) {
           fullWidth
           variant="standard"
         />
+        <Card
+          variant="outlined"
+          sx={{ mt: 1, p: 1, display: 'flex', justifyContent: 'center' }}
+        >
+          {filteredIcons.map(([name, Icon]) => (
+            <Box
+              sx={{
+                display: 'inline-flex',
+                flexDirection: 'column',
+                width: 40,
+                mx: 1,
+              }}
+              key={name}
+            >
+              <ToggleButton
+                value={name}
+                selected={name === icon}
+                onClick={() => setIcon(name)}
+              >
+                <Icon />
+              </ToggleButton>
+              <Typography
+                variant="caption"
+                align="center"
+                sx={{ textOverflow: 'ellipsis', overflow: 'hidden' }}
+              >
+                {name}
+              </Typography>
+            </Box>
+          ))}
+        </Card>
       </DialogContent>
+      <DialogActions>
+        <Button onClick={dialogState.close}>Cancel</Button>
+        <Button
+          onClick={() => {
+            void newList(state, icon);
+            dialogState.close();
+          }}
+        >
+          Create
+        </Button>
+      </DialogActions>
     </Dialog>
   );
 }
