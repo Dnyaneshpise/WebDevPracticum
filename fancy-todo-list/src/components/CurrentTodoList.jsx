@@ -46,5 +46,59 @@ export function CurrentTodoList() {
 
   const Icon = Icons[data?.icon];
 
-  return (<></>);
+  return (
+    <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Toolbar />
+      <Box sx={{ flex: 1 }}>
+        {data ? (
+          <>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+              <Box
+                sx={{
+                  border: theme => `1px solid ${theme.palette.divider}`,
+                  p: 1,
+                  mr: 1,
+                  borderRadius: '50%',
+                  display: 'flex',
+                }}
+              >
+                {Icon ? (
+                  <Icon fontSize="large" />
+                ) : (
+                  <Icons.List fontSize="large" />
+                )}
+              </Box>
+              <TextField
+                value={originalListName}
+                onChange={event => {
+                  setOriginalListName(event.target.value);
+                }}
+                onBlur={event => {
+                  void updateList(data.id, event.target.value);
+                }}
+              />
+            </Box>
+            <Divider />
+            <List
+              sx={{
+                width: '100%',
+                bgcolor: 'background.paper',
+                mx: 'auto',
+                mt: 2,
+              }}
+            >
+              {data.items.map(({ id, checked }) => {
+                const labelId = `checkbox-list-label-${id}`;
+
+                return (<></>
+                );
+              })}
+            </List>
+          </>
+        ) : (
+          <Typography>No List Selected</Typography>
+        )}
+      </Box>
+    </Box>
+  );
 }
