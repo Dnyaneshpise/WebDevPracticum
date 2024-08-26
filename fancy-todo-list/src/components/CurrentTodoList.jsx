@@ -139,6 +139,45 @@ export function CurrentTodoList() {
                   </ListItem>
                 );
               })}
+              <ListItem>
+                <Box
+                  component="form"
+                  sx={{ width: 1 }}
+                  onSubmit={event => {
+                    event.preventDefault();
+                    void newItem(newItemText);
+                    setNewItemText('');
+                  }}
+                >
+                  <TextField
+                    onChange={event => {
+                      setNewItemText(event.target.value);
+                    }}
+                    value={newItemText}
+                    margin="normal"
+                    id="new-item"
+                    label="New Item"
+                    type="text"
+                    fullWidth
+                    variant="filled"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="submit"
+                            onClick={() => {
+                              document.activeElement.blur();
+                            }}
+                            edge="end"
+                          >
+                            <Send />
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Box>
+              </ListItem>
             </List>
           </>
         ) : (
