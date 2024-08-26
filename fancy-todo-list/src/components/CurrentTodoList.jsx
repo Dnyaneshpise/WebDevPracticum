@@ -90,7 +90,53 @@ export function CurrentTodoList() {
               {data.items.map(({ id, checked }) => {
                 const labelId = `checkbox-list-label-${id}`;
 
-                return (<></>
+                return (
+                  <ListItem
+                    key={id}
+                    secondaryAction={
+                      <IconButton
+                        edge="end"
+                        aria-label="delete"
+                        onClick={() => deleteItem(id)}
+                      >
+                        <DeleteOutlineRounded />
+                      </IconButton>
+                    }
+                    disablePadding
+                  >
+                    <ListItemButton
+                      role={undefined}
+                      onClick={() => toggleChecked(id)}
+                      dense
+                    >
+                      <ListItemIcon>
+                        <Checkbox
+                          edge="start"
+                          checked={checked ?? false}
+                          tabIndex={-1}
+                          disableRipple
+                          inputProps={{ 'aria-labelledby': labelId }}
+                        />
+                      </ListItemIcon>
+                      <ListItemText id={labelId}>
+                        <TextField
+                          onClick={e => e.stopPropagation()}
+                          onChange={event => {
+                            setOriginalListItems({
+                              ...originalListItems,
+                              [id]: event.target.value,
+                            });
+                          }}
+                          onBlur={event => {
+                            void updateItem(id, event.target.value);
+                          }}
+                          value={originalListItems[id] ?? ''}
+                          size="small"
+                          variant="standard"
+                        />
+                      </ListItemText>
+                    </ListItemButton>
+                  </ListItem>
                 );
               })}
             </List>
